@@ -1,0 +1,222 @@
+/* 1. 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: "Pretendard", "Malgun Gothic", sans-serif;
+    color: #333;
+    line-height: 1.6;
+    /* 모바일 여백 축소 (60px -> 30px) */
+    padding: 30px 15px;
+}
+
+/* 2. 레이아웃 컨테이너 */
+.page-wrapper {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* 섹션 간 간격 조절 */
+    gap: 40px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+/* 3. 요약 그리드 레이아웃 (반응형의 핵심) */
+.summary-grid {
+    display: grid;
+    gap: 20px;
+    /* 기본: 모바일 1열 */
+    grid-template-columns: 1fr;
+}
+
+/* 태블릿 (768px 이상) */
+@media (min-width: 768px) {
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .page-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* 데스크탑 (1024px 이상) - 확실하게 3열 적용 */
+@media (min-width: 1024px) {
+    .summary-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    body {
+        padding: 60px 20px;
+    }
+
+    .page-wrapper {
+        gap: 60px;
+    }
+}
+
+/* 4. 카드 스타일 */
+.profile-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-card:hover {
+    transform: translateY(-8px);
+    border-color: #4c6ef5;
+    box-shadow: 0 12px 24px rgba(76, 110, 245, 0.15);
+}
+
+.image-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #4c6ef5;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    backdrop-filter: blur(4px);
+}
+
+.summary-content {
+    padding: 20px;
+}
+
+.summary-name {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+}
+
+.summary-part {
+    color: #4c6ef5;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.profile-card:hover .summary-part {
+    color: #40c057;
+    /* 호버 시 색상 변화 */
+}
+
+.summary-intro {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* 5. 컨트롤 바 & 폼 */
+.control-bar {
+    display: flex;
+    flex-wrap: wrap;
+    /* 모바일에서 버튼 줄바꿈 허용 */
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* 모바일은 1열 */
+    gap: 15px;
+}
+
+@media (min-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* 6. 상세 프로필 */
+.detail-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.detail-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.95rem;
+}
